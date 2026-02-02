@@ -39,17 +39,17 @@ def analizar_mensaje(data: AnalisisRequest):
         prompt = f"""
 Eres un agente de soporte técnico. 
 Analiza el mensaje del cliente y responde SOLO en JSON:
-{
+{{
   "tipo": "respuesta_automatica | escalar",
   "prioridad": "alta | media | baja",
   "respuesta": "texto para el cliente"
-}
+}}
 
 Mensaje del cliente:
-{
-  "cliente": {data.cliente},
-  "mensaje": {data.mensaje}
-}
+{{
+  "cliente": "{data.cliente}",
+  "mensaje": "{data.mensaje}"
+}}
 """
 
         completion = client.chat.completions.create(
